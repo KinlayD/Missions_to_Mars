@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="jumbotron align-items-center">
+            <h1 class="text-center">Mission to Mars </h1>
+            <div class="col-md-12 text-center">
+                <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title text-left">Latest News </h3>
+                                <h4 class="card-text font-weight-bold">{{ mars_news.news_title }}</h4>
+                                <h5 class="card-text font-weight-light">{{ mars_news.paragraph_text }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 left">
+                        <h4 class="text-center">Featured Mars Image </h4>
+                        <img class="img-responsive" src="{{ mars_news.featured_image_url }}", alt="featured_mars_image">
+                    </div>
+                    <div class="col-sm-6"> 
+                        <table class="table">
+                            <h4 class="text-left">Mars Facts </h4> 
+                            {{ mars_news.mars_facts | safe }} 
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <h3 class="text-center">Mars Hemispheres </h3>
+                                {% for img in mars_news.hemisphere_image_urls %}
+                                <div class="col-sm-6 center thumbnail"> {{ img.title }} <img class="img-responsive" src="{{ img.img_url }}"></div>
+                                {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</html>
